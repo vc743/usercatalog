@@ -1,12 +1,16 @@
-import { UserList } from "./components/UserList";
+import { BrowserRouter, Routes, Route } from "react-router";
+import Home from "./pages/Home";
+import UserDetail from "./pages/UserDetail";
 
 function App() {
   return (
-    <div className="max-w-3xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4 text-center">User Catalog</h1>
-      <UserList />
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/users/:id" element={<UserDetail />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
