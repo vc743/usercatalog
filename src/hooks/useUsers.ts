@@ -3,7 +3,7 @@ import { type UserType, usersArraySchema } from "../utils/validation";
 
 export const useUsers = () => {
   const [users, setUsers] = useState<UserType[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(users.length === 0);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -30,6 +30,6 @@ export const useUsers = () => {
   return {
     users,
     loading,
-    error
-  }
+    error,
+  };
 };
