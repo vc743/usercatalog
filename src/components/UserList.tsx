@@ -7,6 +7,8 @@ import UserCard from "./UserCard";
 export const UserList = () => {
   const { users, loading, error } = useUsers();
   const [search, setSearch] = useState("");
+
+  // Filter users by case-insensitive match
   const filteredUsers = users.filter((user) =>
     user.name.toLowerCase().includes(search.toLowerCase())
   );

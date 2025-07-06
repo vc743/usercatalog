@@ -4,9 +4,13 @@ import { useUserDetail } from "../hooks/useUserDetail";
 import { Mail, Phone, Globe, MapPin, Building, ArrowLeft } from "lucide-react";
 
 const UserDetail = () => {
+  // Get the user ID from the route URL
   const { id } = useParams<{ id: string }>();
 
+  // Fetch user details from REST API
   const { user, loading: userLoading, error: userError } = useUserDetail(id);
+  
+  // Fetch posts from GraphQL API
   const { posts, loading: postsLoading, error: postsError } = useUserPosts(id);
   
   if (userLoading || postsLoading)

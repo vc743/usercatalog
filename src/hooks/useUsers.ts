@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { usersArraySchema } from "../utils/validation";
 import { useUserStore } from "../store/userStore";
 
+// Hook to fetch and return users from REST API
+// Uses Zustand store to avoid multiple network requests
 export const useUsers = () => {
   const users = useUserStore((state) => state.users);
   const setUsers = useUserStore((state) => state.setUsers);

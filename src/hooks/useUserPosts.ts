@@ -15,6 +15,8 @@ const POSTS_QUERY = gql`
     }
 `
 
+// This hook sends a GraphQL query to fetch posts by user ID
+// Response is validated with Zod to ensure shape safety
 export const useUserPosts = (userId: string | undefined) => {
     const [posts, setPosts] = useState<PostType[]>([]);
     const [loading, setLoading] = useState<boolean>(true);

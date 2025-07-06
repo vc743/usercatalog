@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { type UserType, userSchema } from "../utils/validation"
 
+//This hook fetches user details from an API based on the provided ID and returns 
+//the user data, loading state, and error message.
 export function useUserDetail(id: string | undefined) {
   const [user, setUser] = useState<UserType | null>(null)
   const [loading, setLoading] = useState(true)
