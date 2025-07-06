@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
-import { type UserType, usersArraySchema } from "../utils/validation";
+import { usersArraySchema } from "../utils/validation";
+import { useUserStore } from "../store/userStore";
 
 export const useUsers = () => {
-  const [users, setUsers] = useState<UserType[]>([]);
+  const users = useUserStore((state) => state.users);
+  const setUsers = useUserStore((state) => state.setUsers);
+
   const [loading, setLoading] = useState(users.length === 0);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // If users are already loaded, skip fetching
+    if (users.length > 0) return;
+
     const fetchUsers = async () => {
       try {
         const response = await fetch(
@@ -25,7 +31,7 @@ export const useUsers = () => {
     };
 
     fetchUsers();
-  }, []);
+  }, [users, setUsers]);
 
   return {
     users,
