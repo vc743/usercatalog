@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { useUsers } from "../hooks/useUsers";
 import SearchInput from "../components/SearchInput";
 import { useState } from "react";
+import UserCard from "./UserCard";
 
 export const UserList = () => {
   const { users, loading, error } = useUsers();
@@ -14,27 +15,24 @@ export const UserList = () => {
   if (error) return <p className="text-red-500 text-center">{error}</p>;
 
   return (
-    <>
-      <SearchInput
-        value={search}
-        onChange={setSearch}
-        placeholder="Search by name..."
-      />
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+    <section className="space-y-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+        <SearchInput
+          value={search}
+          onChange={setSearch}
+          placeholder="Search by name..."
+          className="px-3 py-2 text-sm border border-gray-300 rounded w-full md:w-1/2 placeholder:text-gray-500 md:col-span-2 place-self-center lg:col-span-3 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-300 bg-white"
+        />
         {filteredUsers.length === 0 ? (
           <p className="text-center col-span-full">No user found</p>
         ) : (
           filteredUsers.map((user) => (
             <Link to={`/users/${user.id}`} key={user.id} className="block">
-              <div className="p-4 border rounded hover:bg-gray-100">
-                <h2 className="text-lg font-bold">{user.name}</h2>
-                <p>{user.email}</p>
-                <p className="text-sm text-gray-500">@{user.username}</p>
-              </div>
+              <UserCard user={user}/>
             </Link>
           ))
         )}
       </div>
-    </>
+    </section>
   );
 };
