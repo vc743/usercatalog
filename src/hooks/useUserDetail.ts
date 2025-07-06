@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { type UserType, userSchema } from "../utils/validation"
+import { type UserType, userSchema } from "../utils/userValidation"
 
 //This hook fetches user details from an API based on the provided ID and returns 
 //the user data, loading state, and error message.

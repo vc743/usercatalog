@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { usersArraySchema } from "../utils/validation";
+import { usersArraySchema } from "../utils/userValidation";
 import { useUserStore } from "../store/userStore";
 
 // Hook to fetch and return users from REST API

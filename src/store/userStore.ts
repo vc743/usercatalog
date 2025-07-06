@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import { type UserType } from "../utils/validation"
+import { type UserType } from "../utils/userValidation"
 
 interface UserStore {
   users: UserType[]

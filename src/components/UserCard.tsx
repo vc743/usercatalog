@@ -1,4 +1,4 @@
-import { type UserType } from "../utils/validation";
+import { type UserType } from "../utils/userValidation";
 
 interface UserCardProps {
   user: UserType;
